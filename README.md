@@ -1,73 +1,95 @@
-# React + TypeScript + Vite
+# pf-viz
+Interactive pathfinding algorithm visualizer built with React &amp; TypeScript. Watch BFS, DFS, Dijkstra, and A* find the shortest path in real-time. Draw walls, generate mazes, and adjust animation speed. Track algorithm performance with live statistics. Perfect for learning graph algorithms visually.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## ✨ Features
 
-Currently, two official plugins are available:
+### 🔍 Pathfinding Algorithms
+- **Breadth-First Search (BFS)** - Guarantees shortest path for unweighted graphs
+- **Depth-First Search (DFS)** - Explores as far as possible along each branch
+- **Dijkstra's Algorithm** - Finds shortest path considering weighted cells
+- **A-Star Search** - Heuristic-based algorithm for optimal pathfinding
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 🌀 Maze Generation
+- **Recursive Division** - Divides space recursively to create perfect mazes
+- **Randomized Prim's Algorithm** - Generates mazes using minimum spanning trees
+- **Binary Tree** - Simple and fast maze generation technique
 
-## React Compiler
+### 🎨 Interactive Features
+- **Visual Grid Interface** - Draw walls by clicking and dragging
+- **Real-time Animation** - Watch algorithms explore the grid step-by-step
+- **Adjustable Speed** - Control animation speed (slow, medium, fast)
+- **Responsive Design** - Works seamlessly on desktop and mobile devices
+- **Statistics Dashboard** - View visited nodes, path length, and execution time
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- ## 🚀 Getting Started
 
-## Expanding the ESLint configuration
+### Prerequisites
+- Node.js (v18 or higher)
+- Reactjs + typescript
+- tailwindcss
+- npm or yarn
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Installation
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+1. Clone the repository
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+2. Install dependencies
+```bash
+npm install
+# or
+yarn install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+3. Start the development server
+```bash
+npm run dev
+# or
+yarn dev
 ```
+
+4. Open [http://localhost:5173](http://localhost:5173) in your browser
+
+## 🎮 How to Use
+
+1. **Select an Algorithm** - Choose from BFS, DFS, Dijkstra, or A* in the left panel
+2. **Draw Walls** - Click and drag on the grid to create obstacles
+3. **Generate Mazes** - Use maze generation algorithms for quick setups
+4. **Run Visualization** - Click the "Run" button to watch the algorithm in action
+5. **Adjust Settings** - Change animation speed or clear the grid as needed
+
+### Controls
+- **Run** - Execute the selected pathfinding algorithm
+- **Reset** - Clear the entire grid and reset to initial state
+- **Clear Walls** - Remove all walls while preserving the path
+- **Clear Path** - Remove algorithm visualization while keeping walls
+
+## 🏗️ Project Structure
+
+```
+src/
+├── components/          # React components
+│   ├── main/           # Main grid and cell components
+│   └── ui/             # Reusable UI components
+├── contexts/           # React context providers
+│   ├── AppContext.ts   # Application state context
+│   └── GridContext.ts  # Grid state context
+├── hooks/              # Custom React hooks
+├── lib/                # Core logic and utilities
+│   ├── graphAlgorithms.ts    # Pathfinding algorithm executor
+│   ├── mazeAlgorithms.ts     # Maze generation executor
+│   └── constants.ts          # Application constants
+└── types/              # TypeScript type definitions
+```
+
+## 🛠️ Built With
+
+- **React 18** - UI library
+- **TypeScript** - Type-safe JavaScript
+- **Tailwind CSS** - Utility-first CSS framework
+- **Vite** - Fast build tool and dev server
+- **Lucide React** - Icon library
+- **shadcn/ui** - Component library
+
+## 👨‍💻 Author
+
+**Gaurav Kapri** 
