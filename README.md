@@ -1,6 +1,9 @@
 # pf-viz
 Interactive pathfinding algorithm visualizer built with React &amp; TypeScript. Watch BFS, DFS, Dijkstra, and A* find the shortest path in real-time. Draw walls, generate mazes, and adjust animation speed. Track algorithm performance with live statistics. Perfect for learning graph algorithms visually.
 
+🔗 **Live Demo:**  
+👉 https://gauravkapri.github.io/pf-viz/
+
 ## ✨ Features
 
 ### 🔍 Pathfinding Algorithms
