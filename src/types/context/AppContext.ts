@@ -1,11 +1,6 @@
-import type { GraphAlgorithm, MazeAlgorithm } from "../algorithms";
-import type { AppMode, Speed } from "../app";
-
-export interface AnimationStats {
-  visitedNodes: number;
-  pathLength: number;
-  executionTime: number;
-}
+import type { GraphAlgorithm, MazeAlgorithm } from "@/types/algorithms";
+import type { AppMode, Speed } from "@/types/app";
+import type { AnimationStats } from "@/types/animation";
 
 export interface AppContextState {
   graphAlgorithm: GraphAlgorithm;

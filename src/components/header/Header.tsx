@@ -1,8 +1,8 @@
 import { Info, Menu } from "lucide-react";
 import { useCallback } from "react";
 
-import { Badge } from "../ui/badge";
-import { Button } from "../ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import {
   Sheet,
   SheetContent,
@@ -10,10 +10,10 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "../ui/sheet";
+} from "@/components/ui/sheet";
 
-import { LeftPanel } from "../LeftPanel";
-import { RightPanel } from "../RightPanel";
+import { LeftPanel } from "@/components/LeftPanel";
+import { RightPanel } from "@/components/RightPanel";
 
 import { useGridActions, useGridState } from "@/hooks/useGrid";
 import { useAppActions, useAppState } from "@/hooks/useApp";

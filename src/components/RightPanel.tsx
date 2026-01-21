@@ -27,7 +27,7 @@ export const RightPanel = () => {
         />
         <Stat
           label="Execution Time"
-          value={`${animationStats.executionTime}ms`}
+          value={`${animationStats.executionTime.toFixed(2)} ms`}
         />
       </section>
 

@@ -1,6 +1,6 @@
 import { useCallback, useRef } from "react";
-import { useAppActions, useAppState } from "./useApp";
-import { useGridActions } from "./useGrid";
+import { useAppActions, useAppState } from "@/hooks/useApp";
+import { useGridActions } from "@/hooks/useGrid";
 import type { AnimationStep } from "@/types/animation";
 import { SPEED_DELAY_MS } from "@/types/app";
 

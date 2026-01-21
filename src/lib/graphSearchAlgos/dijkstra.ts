@@ -1,7 +1,6 @@
 import type { Grid, Position } from "@/types/Cell";
 import type { AlgorithmResult } from "@/types/algorithms";
-import type { AnimationStep } from "@/types/animation";
-import type { AnimationStats } from "@/types/context/AppContext";
+import type { AnimationStep, AnimationStats } from "@/types/animation";
 
 /**
  * Dijkstra's Algorithm with stats
@@ -111,7 +110,7 @@ export function executeDijkstra(
 }
 
 /**
- * Reconstruct shortest path (same as other algorithms)
+ * Reconstruct shortest path
  */
 function reconstructPath(
   parent: Map<string, Position | null>,

@@ -3,6 +3,10 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "author": {
+    "name": "Gaurav Kapri",
+    "email": "kaprigaurav8325@gmail.com"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",

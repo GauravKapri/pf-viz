@@ -1,5 +1,4 @@
-import type { AnimationStep } from "./animation";
-import type { AnimationStats } from "./context/AppContext";
+import type { AnimationStats, AnimationStep } from "@/types/animation";
 
 export type GraphAlgorithm = "bfs" | "dfs" | "dijkstra" | "astar";
 

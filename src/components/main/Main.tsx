@@ -1,7 +1,7 @@
-import { GitHubIcon } from "../GitHubIcon";
-import { LeftPanel } from "../LeftPanel";
-import { RightPanel } from "../RightPanel";
-import { GridArea } from "./GridArea";
+import { GitHubIcon } from "@/components/GitHubIcon";
+import { LeftPanel } from "@/components/LeftPanel";
+import { RightPanel } from "@/components/RightPanel";
+import { GridArea } from "@/components/main/GridArea";
 
 export const Main = () => {
   return (
@@ -28,8 +28,8 @@ export const Main = () => {
             </span>
 
             <a
-              href="#"
-              // target="_blank"
+              href="https://github.com/GauravKapri/pf-viz"
+              target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub Repository"
               className="hover:text-foreground transition-colors"

@@ -1,7 +1,6 @@
 import type { Grid, Position } from "@/types/Cell";
 import type { AlgorithmResult } from "@/types/algorithms";
-import type { AnimationStep } from "@/types/animation";
-import type { AnimationStats } from "@/types/context/AppContext";
+import type { AnimationStats, AnimationStep } from "@/types/animation";
 
 /**
  * A* Search Algorithm with stats
@@ -156,7 +155,6 @@ function reconstructPath(
   return pathSteps;
 }
 
-// Min Priority Queue (unchanged)
 class MinPriorityQueue<T extends { fScore: number }> {
   private heap: T[] = [];
 

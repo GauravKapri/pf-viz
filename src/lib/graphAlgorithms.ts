@@ -1,9 +1,9 @@
 import type { Grid, Position } from "@/types/Cell";
 import type { AlgorithmResult, GraphAlgorithm } from "@/types/algorithms";
-import { executeBFS } from "./graphSearchAlgos.ts/bfs";
-import { executeDFS } from "./graphSearchAlgos.ts/dfs";
-import { executeDijkstra } from "./graphSearchAlgos.ts/dijkstra";
-import { executeAStar } from "./graphSearchAlgos.ts/astar";
+import { executeBFS } from "@/lib/graphSearchAlgos/bfs";
+import { executeDFS } from "@/lib/graphSearchAlgos/dfs";
+import { executeDijkstra } from "@/lib/graphSearchAlgos/dijkstra";
+import { executeAStar } from "@/lib/graphSearchAlgos/astar";
 
 /**
  * Execute a graph algorithm and return animation steps

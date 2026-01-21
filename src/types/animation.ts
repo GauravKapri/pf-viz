@@ -1,4 +1,4 @@
-import type { CellState } from "./Cell";
+import type { CellState } from "@/types/Cell";
 
 export type CellMutation = {
   kind: "setState";
@@ -10,4 +10,10 @@ export type CellMutation = {
 export interface AnimationStep {
   mutations: CellMutation[];
   phase: "maze" | "search" | "path";
+}
+
+export interface AnimationStats {
+  visitedNodes: number;
+  pathLength: number;
+  executionTime: number;
 }

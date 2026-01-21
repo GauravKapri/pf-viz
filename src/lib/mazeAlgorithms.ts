@@ -1,9 +1,9 @@
 import type { Grid } from "@/types/Cell";
 import type { AnimationStep } from "@/types/animation";
 import type { MazeAlgorithm } from "@/types/algorithms";
-import { executeRecursiveDivision } from "./mazeGenAlgos.ts/recursiveDivision";
-import { executeRandomizedPrims } from "./mazeGenAlgos.ts/randomizedPrims";
-import { executeBinaryTree } from "./mazeGenAlgos.ts/binaryTree";
+import { executeRecursiveDivision } from "@/lib/mazeGenAlgos/recursiveDivision";
+import { executeRandomizedPrims } from "@/lib/mazeGenAlgos/randomizedPrims";
+import { executeBinaryTree } from "@/lib/mazeGenAlgos/binaryTree";
 
 /**
  * Execute a maze generation algorithm and return animation steps
@@ -14,7 +14,7 @@ import { executeBinaryTree } from "./mazeGenAlgos.ts/binaryTree";
  */
 export function executeMazeAlgorithm(
   algorithm: MazeAlgorithm,
-  grid: Grid
+  grid: Grid,
 ): AnimationStep[] {
   switch (algorithm) {
     case "recursive-division":

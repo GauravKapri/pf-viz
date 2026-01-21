@@ -1,5 +1,5 @@
-import type { Grid } from "../Cell";
-import type { AnimationStep } from "../animation";
+import type { Grid } from "@/types/Cell";
+import type { AnimationStep } from "@/types/animation";
 
 export interface GridContextState {
   grid: Grid;

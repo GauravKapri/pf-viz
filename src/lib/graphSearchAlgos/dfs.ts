@@ -1,51 +1,17 @@
-import type { AlgorithmResult } from "@/types/algorithms";
-import type { AnimationStep } from "@/types/animation";
 import type { Grid, Position } from "@/types/Cell";
-import type { AnimationStats } from "@/types/context/AppContext";
+import type { AlgorithmResult } from "@/types/algorithms";
+import type { AnimationStep, AnimationStats } from "@/types/animation";
 
 /**
- * Reconstruct the shortest path from start to end using parent tracking
+ * Depth-First Search (DFS) Algorithm with stats
+ *
+ * Does NOT guarantee shortest path
+ * Explores as far as possible along each branch before backtracking
+ *
+ * Time Complexity: O(V + E)
+ * Space Complexity: O(V)
  */
-function reconstructPath(
-  parent: Map<string, Position | null>,
-  start: Position,
-  end: Position,
-): AnimationStep[] {
-  const pathSteps: AnimationStep[] = [];
-  const path: Position[] = [];
-
-  const key = (pos: Position) => `${pos.row}-${pos.col}`;
-
-  // Trace back from end to start
-  let current: Position | null = end;
-
-  while (current !== null) {
-    path.unshift(current);
-    const parentPos = parent.get(key(current));
-    if (parentPos === undefined) break;
-    current = parentPos;
-  }
-
-  // Create animation steps for the path (skip start and end)
-  for (const pos of path) {
-    if (
-      (pos.row === start.row && pos.col === start.col) ||
-      (pos.row === end.row && pos.col === end.col)
-    )
-      continue;
-
-    pathSteps.push({
-      mutations: [
-        { kind: "setState", row: pos.row, col: pos.col, state: "path" },
-      ],
-      phase: "path",
-    });
-  }
-
-  return pathSteps;
-}
-
-export function executeBFS(
+export function executeDFS(
   grid: Grid,
   start: Position,
   end: Position,
@@ -53,7 +19,7 @@ export function executeBFS(
   const steps: AnimationStep[] = [];
   const visited = new Set<string>();
   const parent = new Map<string, Position | null>();
-  const queue: Position[] = [start];
+  const stack: Position[] = [start];
 
   const key = (pos: Position) => `${pos.row}-${pos.col}`;
 
@@ -68,10 +34,11 @@ export function executeBFS(
 
   const startTime = performance.now();
 
-  while (queue.length > 0) {
-    const current = queue.shift()!;
+  while (stack.length > 0) {
+    const current = stack.pop()!;
     stats.visitedNodes++;
 
+    // Check if reached end
     if (current.row === end.row && current.col === end.col) {
       const pathSteps = reconstructPath(parent, start, end);
       stats.pathLength = pathSteps.length;
@@ -101,7 +68,9 @@ export function executeBFS(
       [0, -1],
     ];
 
-    for (const [dr, dc] of directions) {
+    // Reverse for DFS visual consistency
+    for (let i = directions.length - 1; i >= 0; i--) {
+      const [dr, dc] = directions[i];
       const newRow = current.row + dr;
       const newCol = current.col + dc;
       const neighbor: Position = { row: newRow, col: newCol };
@@ -114,13 +83,12 @@ export function executeBFS(
         newCol >= grid[0].length
       )
         continue;
-
       const cell = grid[newRow][newCol];
       if (cell.state === "wall" || visited.has(neighborKey)) continue;
 
       visited.add(neighborKey);
       parent.set(neighborKey, current);
-      queue.push(neighbor);
+      stack.push(neighbor);
 
       if (!(newRow === end.row && newCol === end.col)) {
         steps.push({
@@ -134,6 +102,45 @@ export function executeBFS(
   }
 
   stats.executionTime = performance.now() - startTime;
-  console.warn("BFS: No path found");
+  console.warn("DFS: No path found from start to end");
   return { steps, stats };
+}
+
+/**
+ * Reconstruct path for DFS (same as original)
+ */
+function reconstructPath(
+  parent: Map<string, Position | null>,
+  start: Position,
+  end: Position,
+): AnimationStep[] {
+  const pathSteps: AnimationStep[] = [];
+  const path: Position[] = [];
+
+  const key = (pos: Position) => `${pos.row}-${pos.col}`;
+  let current: Position | null = end;
+
+  while (current !== null) {
+    path.unshift(current);
+    const parentPos = parent.get(key(current));
+    if (parentPos === undefined) break;
+    current = parentPos;
+  }
+
+  for (const pos of path) {
+    if (
+      (pos.row === start.row && pos.col === start.col) ||
+      (pos.row === end.row && pos.col === end.col)
+    )
+      continue;
+
+    pathSteps.push({
+      mutations: [
+        { kind: "setState", row: pos.row, col: pos.col, state: "path" },
+      ],
+      phase: "path",
+    });
+  }
+
+  return pathSteps;
 }

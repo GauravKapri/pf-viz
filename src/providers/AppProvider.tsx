@@ -2,11 +2,11 @@ import { useMemo, useState, type ReactNode } from "react";
 
 import { AppContext } from "@/contexts/AppContext";
 import type {
-  AnimationStats,
   AppContextActions,
   AppContextState,
   AppContextType,
 } from "@/types/context/AppContext";
+import type { AnimationStats } from "@/types/animation";
 
 interface AppProviderProps {
   children: ReactNode;
